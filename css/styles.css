@@ -22,47 +22,46 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     text-align: center;
-    clip-path: polygon(5% 0, 100% 5%, );
+    clip-path: polygon(0 0, 96% 0,100% 100%,4% 100%);
 }
 
 .full-name {
-    color: #fff;
+    color: #fff; 
 }
 
 .full-name > .primary {
     font-size: 60px;
-    display: block;
     text-transform: uppercase;
     letter-spacing: 10px;
     margin-bottom:10px;
-    animation-name: ani;
+    animation-name: moveRight;
     animation-duration: 0.5s;
     animation-timing-function: ease-out;
     backface-visibility: hidden;
-    
+    display: inline-block;
 
 }
 
-.full-name > .secondary {
-    display: block;
+.full-name > .secondary { 
     font-size: 20px;
     text-transform: uppercase;
     letter-spacing: 10px;
-    animation-name: ani-rev;
+    animation-name: moveLeft;
     animation-timing-function: ease-out;
     backface-visibility: hidden; 
     animation-duration: 0.5s;
-
+    display: inline-block;
 }
 
-@keyframes ani{
-    0%{
+@keyframes moveRight{
+    0%{ 
         opacity: 0;
         transform: translateX(-100px);
     }
 
-    80%{
+    80% {
         transform: translateX(20px);
     }
 
@@ -72,8 +71,8 @@ body {
     }
 }
 
-@keyframes ani-rev {
-    0%{
+@keyframes moveLeft {
+    0% {
         opacity: 0;
         transform: translateX(100px);
     }
@@ -82,8 +81,69 @@ body {
         transform: translateX(-20px);
     }
 
-    100%{
+    100% {
         opacity: 1;
         transform: translateX(0);
     }
+}
+
+.btn:link, .btn:visited {
+    text-decoration: none;
+    text-transform: uppercase;
+    padding: 15px 45px;
+    margin-top: 40px;
+    border-radius: 100px;   
+    position: relative;
+    transition: all 0.2s;
+    animation-name: moveUp;
+    animation-duration: 0.5s;
+    backface-visibility: hidden;
+}
+
+@keyframes moveUp{
+    0% {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.btn-white {
+    background-color: #ffffff;
+    color: #777777;
+}
+
+.btn:hover {
+    transform: translateY(-3px) scale(1.1);
+    box-shadow: 0 8px 10px rgba(0, 0, 0, .2);
+}
+
+.btn:active {
+    transform: translateY(-1px) scale(1.02);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, .2);
+}
+
+.btn::after {
+    content: "";
+    height: 100%;
+    width: 100%;
+    border-radius: 100px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all 0.4s;
+}
+
+.btn-white::after {
+    background-color: #ffffff;
+}
+
+.btn:hover::after {
+    transform: scale(1.5);
+    opacity: 0;
 }
