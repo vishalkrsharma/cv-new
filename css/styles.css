@@ -24,7 +24,7 @@ body {
     align-items: center;
     flex-direction: column;
     text-align: center;
-    clip-path: polygon(0 0, 96% 0,100% 100%,4% 100%);
+    clip-path: polygon(0 0, 95% 5%,100% 100%,5% 95%);
 }
 
 .full-name {
@@ -146,4 +146,14 @@ body {
 .btn:hover::after {
     transform: scale(1.5);
     opacity: 0;
+}
+
+@media(max-width: 1000px){
+    .full-name > .primary {
+        font-size: 30px;
+    }
+
+    .full-name > .secondary {
+        font-size: 15px;
+    }
 }
