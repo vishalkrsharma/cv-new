@@ -1,0 +1,16 @@
+.header {
+    background-image: linear-gradient(
+        to right bottom,
+        rgba($color-blue-gradient, 0.5),
+        rgba($color-red-gradient, 0.5)),
+    url(../img/header-bg.jpeg);
+    background-size: cover;
+    height: 95vh;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    clip-path: polygon(0 0, 97% 5%,100% 100%,3% 95%);
+}

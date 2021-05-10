@@ -1,193 +1,41 @@
-$body-bg-color: #6d666633;
-$color-blue-gradient: #69697c;
-$color-red-gradient: #866d6d;
-$color-white: #ffffff;
-$color-black: #000000;
+@import "abstracts/functions";
+@import "abstracts/mixins";
+@import "abstracts/variables";
 
-*,
-*::before, 
-*::after {
-    margin: 0;
-    padding: 0;
-    box-sizing: inherit;
-}
+@import "base/animations"; 
+@import "base/base"; 
+@import "base/typography"; 
+@import "base/utilities"; 
 
-html{
-    font-size: 62.5%;
-}
+@import "components/buttons";
 
-body {
-    font-family : 'Lato' , sans-serif;
-    padding: 1.5rem;
-    background-color: $body-bg-color;
-    box-sizing: border-box;
-}
+@import "layout/header";
 
-.header {
-    background-image: linear-gradient(
-        to right bottom,
-        rgba($color-blue-gradient, 0.5),
-        rgba($color-red-gradient, 0.5)),
-    url(../img/header-bg.jpeg);
-    background-size: cover;
-    height: 95vh;
-    background-position: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    text-align: center;
-    clip-path: polygon(0 0, 97% 5%,100% 100%,3% 95%);
+@import "pages/home";
 
-    & .full-name {
-        color: $color-white; 
+.header .full-name {
+    color: $color-white; 
 
-        & .primary {
-            font-size: 6rem;
-            text-transform: uppercase;
-            letter-spacing: 1rem;
-            margin-bottom:1rem;
-            animation-name: moveRight;
-            animation-duration: 0.5s;
-            animation-timing-function: ease-out;
-            backface-visibility: hidden;
-            display: inline-block;
-        }
-
-        & .secondary {
-            font-size: 2rem;
-            text-transform: uppercase;
-            letter-spacing: 1rem;
-            animation-name: moveLeft;
-            animation-timing-function: ease-out;
-            backface-visibility: hidden; 
-            animation-duration: 0.5s;
-            display: inline-block;
-        }
-    }
-}
-
-@keyframes moveRight{
-    0%{ 
-        opacity: 0;
-        transform: translateX(-10rem);
-    }
-
-    80% {
-        transform: translateX(2rem);
-    }
-
-    100%{
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-@keyframes moveLeft {
-    0% {
-        opacity: 0;
-        transform: translateX(10rem);
-    }
-
-    80% {
-        transform: translateX(-2rem);
-    }
-
-    100% {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-.btn {
-    &:link, 
-    &:visited {
-        text-decoration: none;
+    & .primary {
+        font-size: 6rem;
         text-transform: uppercase;
-        font-size: 1.5rem;
-        padding: 1.5rem 4.5rem;
-        margin-top: 4rem;
-        border-radius: 10rem;   
-        position: relative;
-        transition: all 0.2s;
-    }
-
-    &:hover {
-        transform: translateY(-.3rem) scale(1.04);
-        box-shadow: 0 .8rem 1rem rgba($color-black, .2);
-
-        &::after {
-            transform: scale(1.5);
-            opacity: 0;
-        }
-    }
-
-    &:active {
-        transform: translateY(-.1rem) scale(1.02);
-        box-shadow: 0 .4rem 1rem rgba($color-black, .2);
-    }
-
-    &::after {
-        content: "";
-        height: 100%;
-        width: 100%;
-        border-radius: 10rem;
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: -1;
-        transition: all 0.4s;
-    }
-    
-    &-white {
-        background-color: $color-white;
-        color: #777777;
-    
-        &::after {
-            background-color: $color-white;
-        }
-    }
-
-    &-header {
-        animation-name: moveUp;
+        letter-spacing: 1rem;
+        margin-bottom:1rem;
+        animation-name: moveRight;
         animation-duration: 0.5s;
+        animation-timing-function: ease-out;
         backface-visibility: hidden;
+        display: inline-block;
+    }
+
+    & .secondary {
+        font-size: 2rem;
+        text-transform: uppercase;
+        letter-spacing: 1rem;
+        animation-name: moveLeft;
+        animation-timing-function: ease-out;
+        backface-visibility: hidden; 
+        animation-duration: 0.5s;
+        display: inline-block;
     }
 }
-
-
-
-
-
-
-
-@keyframes moveUp{
-    0% {
-        transform: translateY(5rem);
-        opacity: 0;
-    }
-
-    100% {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-
-
-
-@media(max-width: 1000px){
-    .header {
-        height: 90vh;
-        clip-path: polygon(0 0, 100% 0,100% 95%,0 100%);
-    }
-
-    .full-name > .primary {
-        font-size: 3rem;
-        margin-bottom: 2rem;
-    }
-
-    .full-name > .secondary {
-        font-size: 1.5rem;
-    }
-}
-
