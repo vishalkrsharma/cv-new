@@ -15,7 +15,7 @@ body {
   box-sizing: border-box; }
 
 .header {
-  background-image: linear-gradient(to right bottom, rgba(105, 105, 124, 0.502), rgba(134, 109, 109, 0.502)), url(../img/header-bg.jpeg);
+  background-image: linear-gradient(to right bottom, rgba(105, 105, 124, 0.5), rgba(134, 109, 109, 0.5)), url(../img/header-bg.jpeg);
   background-size: cover;
   height: 95vh;
   background-position: center;
@@ -25,30 +25,27 @@ body {
   flex-direction: column;
   text-align: center;
   clip-path: polygon(0 0, 97% 5%, 100% 100%, 3% 95%); }
-
-.full-name {
-  color: #fff; }
-
-.full-name > .primary {
-  font-size: 6rem;
-  text-transform: uppercase;
-  letter-spacing: 1rem;
-  margin-bottom: 1rem;
-  animation-name: moveRight;
-  animation-duration: 0.5s;
-  animation-timing-function: ease-out;
-  backface-visibility: hidden;
-  display: inline-block; }
-
-.full-name > .secondary {
-  font-size: 2rem;
-  text-transform: uppercase;
-  letter-spacing: 1rem;
-  animation-name: moveLeft;
-  animation-timing-function: ease-out;
-  backface-visibility: hidden;
-  animation-duration: 0.5s;
-  display: inline-block; }
+  .header .full-name {
+    color: #ffffff; }
+    .header .full-name .primary {
+      font-size: 6rem;
+      text-transform: uppercase;
+      letter-spacing: 1rem;
+      margin-bottom: 1rem;
+      animation-name: moveRight;
+      animation-duration: 0.5s;
+      animation-timing-function: ease-out;
+      backface-visibility: hidden;
+      display: inline-block; }
+    .header .full-name .secondary {
+      font-size: 2rem;
+      text-transform: uppercase;
+      letter-spacing: 1rem;
+      animation-name: moveLeft;
+      animation-timing-function: ease-out;
+      backface-visibility: hidden;
+      animation-duration: 0.5s;
+      display: inline-block; }
 
 @keyframes moveRight {
   0% {
@@ -70,8 +67,7 @@ body {
     opacity: 1;
     transform: translateX(0); } }
 
-.btn:link,
-.btn:visited {
+.btn:link, .btn:visited {
   text-decoration: none;
   text-transform: uppercase;
   font-size: 1.5rem;
@@ -81,21 +77,12 @@ body {
   position: relative;
   transition: all 0.2s; }
 
-@keyframes moveUp {
-  0% {
-    transform: translateY(5rem);
-    opacity: 0; }
-  100% {
-    transform: translateY(0);
-    opacity: 1; } }
-
-.btn-white {
-  background-color: #ffffff;
-  color: #777777; }
-
 .btn:hover {
   transform: translateY(-0.3rem) scale(1.04);
   box-shadow: 0 0.8rem 1rem rgba(0, 0, 0, 0.2); }
+  .btn:hover::after {
+    transform: scale(1.5);
+    opacity: 0; }
 
 .btn:active {
   transform: translateY(-0.1rem) scale(1.02);
@@ -112,12 +99,24 @@ body {
   z-index: -1;
   transition: all 0.4s; }
 
-.btn-white::after {
-  background-color: #ffffff; }
+.btn-white {
+  background-color: #ffffff;
+  color: #777777; }
+  .btn-white::after {
+    background-color: #ffffff; }
 
-.btn:hover::after {
-  transform: scale(1.5);
-  opacity: 0; }
+.btn-header {
+  animation-name: moveUp;
+  animation-duration: 0.5s;
+  backface-visibility: hidden; }
+
+@keyframes moveUp {
+  0% {
+    transform: translateY(5rem);
+    opacity: 0; }
+  100% {
+    transform: translateY(0);
+    opacity: 1; } }
 
 @media (max-width: 1000px) {
   .header {
@@ -128,8 +127,3 @@ body {
     margin-bottom: 2rem; }
   .full-name > .secondary {
     font-size: 1.5rem; } }
-
-.btn-header {
-  animation-name: moveUp;
-  animation-duration: 0.5s;
-  backface-visibility: hidden; }

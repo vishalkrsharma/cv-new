@@ -1,6 +1,8 @@
 $body-bg-color: #6d666633;
 $color-blue-gradient: #69697c;
 $color-red-gradient: #866d6d;
+$color-white: #ffffff;
+$color-black: #000000;
 
 *,
 *::before, 
@@ -24,8 +26,8 @@ body {
 .header {
     background-image: linear-gradient(
         to right bottom,
-        rgba($color-blue-gradient, 0.502),
-        rgba($color-red-gradient, 0.502)),
+        rgba($color-blue-gradient, 0.5),
+        rgba($color-red-gradient, 0.5)),
     url(../img/header-bg.jpeg);
     background-size: cover;
     height: 95vh;
@@ -36,34 +38,33 @@ body {
     flex-direction: column;
     text-align: center;
     clip-path: polygon(0 0, 97% 5%,100% 100%,3% 95%);
-}
 
-.full-name {
-    color: #fff; 
-}
+    & .full-name {
+        color: $color-white; 
 
-.full-name > .primary {
-    font-size: 6rem;
-    text-transform: uppercase;
-    letter-spacing: 1rem;
-    margin-bottom:1rem;
-    animation-name: moveRight;
-    animation-duration: 0.5s;
-    animation-timing-function: ease-out;
-    backface-visibility: hidden;
-    display: inline-block;
+        & .primary {
+            font-size: 6rem;
+            text-transform: uppercase;
+            letter-spacing: 1rem;
+            margin-bottom:1rem;
+            animation-name: moveRight;
+            animation-duration: 0.5s;
+            animation-timing-function: ease-out;
+            backface-visibility: hidden;
+            display: inline-block;
+        }
 
-}
-
-.full-name > .secondary { 
-    font-size: 2rem;
-    text-transform: uppercase;
-    letter-spacing: 1rem;
-    animation-name: moveLeft;
-    animation-timing-function: ease-out;
-    backface-visibility: hidden; 
-    animation-duration: 0.5s;
-    display: inline-block;
+        & .secondary {
+            font-size: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 1rem;
+            animation-name: moveLeft;
+            animation-timing-function: ease-out;
+            backface-visibility: hidden; 
+            animation-duration: 0.5s;
+            display: inline-block;
+        }
+    }
 }
 
 @keyframes moveRight{
@@ -98,17 +99,67 @@ body {
     }
 }
 
-.btn:link, 
-.btn:visited {
-    text-decoration: none;
-    text-transform: uppercase;
-    font-size: 1.5rem;
-    padding: 1.5rem 4.5rem;
-    margin-top: 4rem;
-    border-radius: 10rem;   
-    position: relative;
-    transition: all 0.2s;
+.btn {
+    &:link, 
+    &:visited {
+        text-decoration: none;
+        text-transform: uppercase;
+        font-size: 1.5rem;
+        padding: 1.5rem 4.5rem;
+        margin-top: 4rem;
+        border-radius: 10rem;   
+        position: relative;
+        transition: all 0.2s;
+    }
+
+    &:hover {
+        transform: translateY(-.3rem) scale(1.04);
+        box-shadow: 0 .8rem 1rem rgba($color-black, .2);
+
+        &::after {
+            transform: scale(1.5);
+            opacity: 0;
+        }
+    }
+
+    &:active {
+        transform: translateY(-.1rem) scale(1.02);
+        box-shadow: 0 .4rem 1rem rgba($color-black, .2);
+    }
+
+    &::after {
+        content: "";
+        height: 100%;
+        width: 100%;
+        border-radius: 10rem;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        transition: all 0.4s;
+    }
+    
+    &-white {
+        background-color: $color-white;
+        color: #777777;
+    
+        &::after {
+            background-color: $color-white;
+        }
+    }
+
+    &-header {
+        animation-name: moveUp;
+        animation-duration: 0.5s;
+        backface-visibility: hidden;
+    }
 }
+
+
+
+
+
+
 
 @keyframes moveUp{
     0% {
@@ -122,41 +173,7 @@ body {
     }
 }
 
-.btn-white {
-    background-color: #ffffff;
-    color: #777777;
-}
 
-.btn:hover {
-    transform: translateY(-.3rem) scale(1.04);
-    box-shadow: 0 .8rem 1rem rgba(0, 0, 0, .2);
-}
-
-.btn:active {
-    transform: translateY(-.1rem) scale(1.02);
-    box-shadow: 0 .4rem 1rem rgba(0, 0, 0, .2);
-}
-
-.btn::after {
-    content: "";
-    height: 100%;
-    width: 100%;
-    border-radius: 10rem;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-    transition: all 0.4s;
-}
-
-.btn-white::after {
-    background-color: #ffffff;
-}
-
-.btn:hover::after {
-    transform: scale(1.5);
-    opacity: 0;
-}
 
 @media(max-width: 1000px){
     .header {
@@ -174,8 +191,3 @@ body {
     }
 }
 
-.btn-header {
-    animation-name: moveUp;
-    animation-duration: 0.5s;
-    backface-visibility: hidden;
-}
