@@ -39,3 +39,17 @@
         display: inline-block;
     }
 }
+
+@media (max-width: 1000px) {
+    .header {
+        clip-path: polygon(0 5%,100% 0, 100% 95%, 0 100%);
+        height: 90vh;
+    }
+    .header .full-name  .primary {
+        font-size: 3rem;
+        margin-bottom: 2rem; 
+    }
+    .header .full-name > .secondary {
+        font-size: 1.5rem;
+    } 
+}
