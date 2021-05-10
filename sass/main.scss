@@ -1,20 +1,31 @@
-* {
+$body-bg-color: #6d666633;
+$color-blue-gradient: #69697c;
+$color-red-gradient: #866d6d;
+
+*,
+*::before, 
+*::after {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    box-sizing: inherit;
+}
+
+html{
+    font-size: 62.5%;
 }
 
 body {
     font-family : 'Lato' , sans-serif;
-    padding: 1%;
-    background-color:rgb(180, 180, 180, 0.2);
+    padding: 1.5rem;
+    background-color: $body-bg-color;
+    box-sizing: border-box;
 }
 
 .header {
     background-image: linear-gradient(
         to right bottom,
-        rgba(105, 105, 124, 0.500),
-        rgba(134, 109, 109, 0.500)),
+        rgba($color-blue-gradient, 0.502),
+        rgba($color-red-gradient, 0.502)),
     url(../img/header-bg.jpeg);
     background-size: cover;
     height: 95vh;
@@ -24,7 +35,7 @@ body {
     align-items: center;
     flex-direction: column;
     text-align: center;
-    clip-path: polygon(0 0, 95% 5%,100% 100%,5% 95%);
+    clip-path: polygon(0 0, 97% 5%,100% 100%,3% 95%);
 }
 
 .full-name {
@@ -32,10 +43,10 @@ body {
 }
 
 .full-name > .primary {
-    font-size: 60px;
+    font-size: 6rem;
     text-transform: uppercase;
-    letter-spacing: 10px;
-    margin-bottom:10px;
+    letter-spacing: 1rem;
+    margin-bottom:1rem;
     animation-name: moveRight;
     animation-duration: 0.5s;
     animation-timing-function: ease-out;
@@ -45,9 +56,9 @@ body {
 }
 
 .full-name > .secondary { 
-    font-size: 20px;
+    font-size: 2rem;
     text-transform: uppercase;
-    letter-spacing: 10px;
+    letter-spacing: 1rem;
     animation-name: moveLeft;
     animation-timing-function: ease-out;
     backface-visibility: hidden; 
@@ -58,11 +69,11 @@ body {
 @keyframes moveRight{
     0%{ 
         opacity: 0;
-        transform: translateX(-100px);
+        transform: translateX(-10rem);
     }
 
     80% {
-        transform: translateX(20px);
+        transform: translateX(2rem);
     }
 
     100%{
@@ -74,11 +85,11 @@ body {
 @keyframes moveLeft {
     0% {
         opacity: 0;
-        transform: translateX(100px);
+        transform: translateX(10rem);
     }
 
     80% {
-        transform: translateX(-20px);
+        transform: translateX(-2rem);
     }
 
     100% {
@@ -87,22 +98,21 @@ body {
     }
 }
 
-.btn:link, .btn:visited {
+.btn:link, 
+.btn:visited {
     text-decoration: none;
     text-transform: uppercase;
-    padding: 15px 45px;
-    margin-top: 40px;
-    border-radius: 100px;   
+    font-size: 1.5rem;
+    padding: 1.5rem 4.5rem;
+    margin-top: 4rem;
+    border-radius: 10rem;   
     position: relative;
     transition: all 0.2s;
-    animation-name: moveUp;
-    animation-duration: 0.5s;
-    backface-visibility: hidden;
 }
 
 @keyframes moveUp{
     0% {
-        transform: translateY(50px);
+        transform: translateY(5rem);
         opacity: 0;
     }
 
@@ -118,20 +128,20 @@ body {
 }
 
 .btn:hover {
-    transform: translateY(-3px) scale(1.1);
-    box-shadow: 0 8px 10px rgba(0, 0, 0, .2);
+    transform: translateY(-.3rem) scale(1.04);
+    box-shadow: 0 .8rem 1rem rgba(0, 0, 0, .2);
 }
 
 .btn:active {
-    transform: translateY(-1px) scale(1.02);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, .2);
+    transform: translateY(-.1rem) scale(1.02);
+    box-shadow: 0 .4rem 1rem rgba(0, 0, 0, .2);
 }
 
 .btn::after {
     content: "";
     height: 100%;
     width: 100%;
-    border-radius: 100px;
+    border-radius: 10rem;
     position: absolute;
     top: 0;
     left: 0;
@@ -149,11 +159,23 @@ body {
 }
 
 @media(max-width: 1000px){
+    .header {
+        height: 90vh;
+        clip-path: polygon(0 0, 100% 0,100% 95%,0 100%);
+    }
+
     .full-name > .primary {
-        font-size: 30px;
+        font-size: 3rem;
+        margin-bottom: 2rem;
     }
 
     .full-name > .secondary {
-        font-size: 15px;
+        font-size: 1.5rem;
     }
+}
+
+.btn-header {
+    animation-name: moveUp;
+    animation-duration: 0.5s;
+    backface-visibility: hidden;
 }
