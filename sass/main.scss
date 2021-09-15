@@ -13,10 +13,12 @@
 
 @import "pages/home";
 
+@import "layout/grid";
+
 .header .full-name {
     color: $color-white; 
 
-    & .primary {
+    & .header-primary-main {
         font-size: 6rem;
         text-transform: uppercase;
         letter-spacing: 1rem;
@@ -28,7 +30,7 @@
         display: inline-block;
     }
 
-    & .secondary {
+    & .header-primary-sub {
         font-size: 2rem;
         text-transform: uppercase;
         letter-spacing: 1rem;
